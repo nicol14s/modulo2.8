@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dulce Encanto | Repostería</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+    <!-- ============================= -->
+    <!-- ENCABEZADO -->
+    <!-- ============================= -->
+
+    <header class="hero" id="inicio">
+
+        <nav class="navbar">
+
+            <a class="logo" href="#inicio">
+                Dulce Encanto
+            </a>
+
+            <button class="menu-btn" id="menuBtn" aria-label="Abrir menú">
+                ☰
+            </button>
+
+            <div class="nav-links" id="navLinks">
+
+                <a href="#inicio">Inicio</a>
+                <a href="#productos">Productos</a>
+                <a href="#nosotros">Nosotros</a>
+                <a href="#contacto">Contacto</a>
+
+            </div>
+
+        </nav>
+
+
+        <!-- ============================= -->
+        <!-- PRESENTACIÓN PRINCIPAL -->
+        <!-- ============================= -->
+
+        <div class="hero-content">
+
+            <div class="hero-logo">
+
+                <div class="logo-box">
+
+                    <div class="logo-icon">
+
+                        <img
+                            src="img/logo.jfif"
+                            alt="Logo Dulce Encanto">
+
+                    </div>
+
+                    <span>
+                        Dulce Encanto
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <p class="mini">
+                REPOSTERÍA ARTESANAL
+            </p>
+
+
+            <div class="titulo-dulce">
+
+                <span>✦</span>
+
+                <h1>
+                    Un detalle dulce para cada ocasión
+                </h1>
+
+                <span>✦</span>
+
+            </div>
+
+
+            <p class="hero-description">
+
+                Pasteles personalizados, cupcakes y postres
+                preparados con cariño para hacer especial
+                cada momento.
+
+            </p>
+
+
+            <a href="#productos" class="btn">
+                Ver productos
+            </a>
+
+        </div>
+
+    </header>
+
+
+
+    <main>
+
+
+        <!-- ============================= -->
+        <!-- PRODUCTOS -->
+        <!-- ============================= -->
+
+        <section class="section" id="productos">
+
+            <p class="mini">
+                NUESTRO MENÚ
+            </p>
+
+
+            <h2>
+                Descubre nuestros deliciosos productos
+            </h2>
+
+
+            <p class="intro">
+
+                Elige una categoría y conoce nuestras opciones
+                preparadas especialmente para ti.
+
+            </p>
+
+
+            <!-- BOTONES DE CATEGORÍAS -->
+
+            <div class="filters">
+
+                <button
+                    class="filter"
+                    data-category="todos">
+
+                    Todos
+
+                </button>
+
+
+                <button
+                    class="filter"
+                    data-category="pasteles">
+
+                    Pasteles
+
+                </button>
+
+
+                <button
+                    class="filter"
+                    data-category="cupcakes">
+
+                    Cupcakes
+
+                </button>
+
+
+                <button
+                    class="filter"
+                    data-category="postres">
+
+                    Postres
+
+                </button>
+
+            </div>
+
+
+            <!-- AQUÍ APARECERÁN LOS PRODUCTOS -->
+
+            <div
+                class="products"
+                id="productContainer">
+            </div>
+
+        </section>
+
+
+
+        <!-- ============================= -->
+        <!-- NOSOTROS -->
+        <!-- ============================= -->
+
+        <section class="about" id="nosotros">
+
+            <div>
+
+                <p class="mini">
+                    CONÓCENOS
+                </p>
+
+
+                <h2>
+                    Hecho para compartir momentos especiales
+                </h2>
+
+
+                <p>
+
+                    Dulce Encanto es un emprendimiento de
+                    repostería que busca ofrecer productos
+                    bonitos, deliciosos y personalizados para
+                    celebraciones y ocasiones especiales.
+
+                </p>
+
+
+                <ul>
+
+                    <li>
+                        ✓ Diseños personalizados
+                    </li>
+
+                    <li>
+                        ✓ Atención amable
+                    </li>
+
+                    <li>
+                        ✓ Opciones para diferentes ocasiones
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- ============================= -->
+            <!-- RECUADRO CON IMAGEN -->
+            <!-- ============================= -->
+
+            <div class="about-card">
+
+                <div class="about-image">
+
+                    <img
+                        src="img/imagen-nosotros.jfif"
+                        alt="Dulce Encanto">
+
+                </div>
+
+
+                <h3>
+                    Endulzamos tus momentos
+                </h3>
+
+
+                <p>
+
+                    Pasteles, cupcakes y postres preparados
+                    con dedicación.
+
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ============================= -->
+        <!-- CONTACTO / RESERVA -->
+        <!-- ============================= -->
+
+        <section
+            class="section contact"
+            id="contacto">
+
+            <p class="mini">
+                RESERVA
+            </p>
+
+
+            <h2>
+                Haz tu pedido
+            </h2>
+
+
+            <p class="intro">
+
+                Completa el formulario y te mostraremos
+                un mensaje de confirmación.
+
+            </p>
+
+
+            <form id="orderForm">
+
+
+                <!-- NOMBRE -->
+
+                <label for="nombre">
+                    Nombre
+                </label>
+
+                <input
+                    id="nombre"
+                    type="text"
+                    required
+                    placeholder="Escribe tu nombre">
+
+
+
+                <!-- PRODUCTO -->
+
+                <label for="producto">
+                    Producto
+                </label>
+
+                <select
+                    id="producto"
+                    required>
+
+                    <option value="">
+                        Selecciona un producto
+                    </option>
+
+                    <option value="Pasteles">
+                        Pasteles
+                    </option>
+
+                    <option value="Cupcakes">
+                        Cupcakes
+                    </option>
+
+                    <option value="Postres">
+                        Postres
+                    </option>
+
+                </select>
+
+
+
+                <!-- FECHA -->
+
+                <label for="fecha">
+                    Fecha deseada
+                </label>
+
+                <input
+                    id="fecha"
+                    type="date"
+                    required>
+
+
+
+                <!-- DETALLES -->
+
+                <label for="mensaje">
+                    Detalle del pedido
+                </label>
+
+                <textarea
+                    id="mensaje"
+                    rows="4"
+                    placeholder="Escribe colores, temática o algún detalle especial">
+                </textarea>
+
+
+
+                <!-- BOTÓN -->
+
+                <button
+                    class="btn"
+                    type="submit">
+
+                    Enviar solicitud
+
+                </button>
+
+
+                <!-- MENSAJE -->
+
+                <p
+                    id="formMessage"
+                    class="form-message">
+                </p>
+
+            </form>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- ============================= -->
+    <!-- PIE DE PÁGINA -->
+    <!-- ============================= -->
+
+    <footer>
+
+        <p>
+
+            © 2026 Dulce Encanto ·
+            Proyecto Innovador de Desarrollo de Portales Web
+
+        </p>
+
+    </footer>
+
+
+
+    <!-- ============================= -->
+    <!-- JAVASCRIPT -->
+    <!-- ============================= -->
+
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>

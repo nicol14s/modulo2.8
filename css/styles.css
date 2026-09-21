@@ -1,0 +1,1075 @@
+/* ==========================================
+   DULCE ENCANTO - ESTILO ROSA
+   ========================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #fff8fb;
+    color: #593b48;
+    line-height: 1.6;
+}
+
+
+/* ==========================================
+   ENCABEZADO
+   ========================================== */
+
+.hero {
+    min-height: 100vh;
+
+    background:
+        linear-gradient(
+            rgba(255, 235, 243, 0.45),
+            rgba(255, 235, 243, 0.45)
+        ),
+        url("../img/fondo.jfif");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    flex-direction: column;
+
+    position: relative;
+}
+
+
+/* ==========================================
+   NAVBAR
+   ========================================== */
+
+.navbar {
+    width: 100%;
+
+    padding: 17px 7%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: rgba(255, 255, 255, 0.92);
+
+    border-bottom: 1px solid #f1cbd9;
+
+    position: relative;
+    z-index: 10;
+}
+
+.logo {
+    text-decoration: none;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 25px;
+    font-weight: bold;
+
+    color: #b64f7b;
+
+    text-shadow:
+        0 0 4px #ffffff,
+        0 0 9px #f4aeca,
+        0 0 15px rgba(211, 91, 140, 0.55);
+}
+
+.nav-links {
+    display: flex;
+    gap: 27px;
+}
+
+.nav-links a {
+    text-decoration: none;
+
+    color: #694453;
+
+    font-weight: 600;
+
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #bd5b86;
+
+    text-shadow:
+        0 0 5px #ffffff,
+        0 0 9px #f2aeca;
+}
+
+.menu-btn {
+    display: none;
+
+    border: none;
+    background: transparent;
+
+    font-size: 27px;
+
+    color: #b64f7b;
+
+    cursor: pointer;
+}
+
+
+/* ==========================================
+   HERO
+   ========================================== */
+
+.hero-content {
+    max-width: 820px;
+
+    margin: auto;
+
+    padding: 75px 20px;
+
+    text-align: center;
+}
+
+
+/* ==========================================
+   LOGO RECTANGULAR DECORADO
+   ========================================== */
+
+.hero-logo {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    margin-bottom: 18px;
+}
+
+.logo-box {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 14px;
+
+    min-width: 300px;
+
+    padding: 12px 28px;
+
+    background: linear-gradient(
+        135deg,
+        #ffffff,
+        #fde3ed
+    );
+
+    border: 2px solid #d989a8;
+
+    border-radius: 16px;
+
+    position: relative;
+
+    box-shadow:
+        0 0 0 4px rgba(255,255,255,0.75),
+        0 6px 20px rgba(177,74,117,0.20),
+        0 0 20px rgba(231,143,177,0.40);
+}
+
+
+/* ==========================================
+   DECORACIÓN DEL LOGO
+   ========================================== */
+
+.logo-box::before {
+    content: "✦";
+
+    position: absolute;
+
+    left: 10px;
+    top: 5px;
+
+    color: #d26c95;
+
+    font-size: 16px;
+
+    text-shadow:
+        0 0 5px white,
+        0 0 10px #efa6c1;
+}
+
+.logo-box::after {
+    content: "✦";
+
+    position: absolute;
+
+    right: 10px;
+    bottom: 5px;
+
+    color: #d26c95;
+
+    font-size: 16px;
+
+    text-shadow:
+        0 0 5px white,
+        0 0 10px #efa6c1;
+}
+
+
+/* ==========================================
+   NOMBRE DEL LOGO
+   ========================================== */
+
+.hero-logo span {
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 30px;
+
+    font-weight: bold;
+
+    color: #b64f7b;
+
+    text-shadow:
+        0 0 4px #ffffff,
+        0 0 9px #f5aeca,
+        0 0 17px rgba(210, 86, 137, 0.6);
+}
+
+
+/* ==========================================
+   IMAGEN DEL LOGO
+   ========================================== */
+
+.logo-icon {
+    width: 55px;
+    height: 55px;
+
+    border-radius: 50%;
+
+    overflow: hidden;
+
+    border: 2px solid #db8eaa;
+
+    background: white;
+
+    box-shadow:
+        0 0 7px white,
+        0 0 14px rgba(213, 112, 153, 0.5);
+}
+
+.logo-icon img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+/* ==========================================
+   TEXTO PEQUEÑO
+   ========================================== */
+
+.mini {
+    color: #b85c82;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 9px;
+
+    text-shadow:
+        0 0 5px white,
+        0 0 8px #f2b0c8;
+}
+
+
+/* ==========================================
+   TÍTULO PRINCIPAL
+   ========================================== */
+
+.titulo-dulce {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 13px;
+}
+
+.titulo-dulce span {
+    color: #d26c95;
+
+    font-size: 22px;
+
+    text-shadow:
+        0 0 5px white,
+        0 0 10px #ee9fbd,
+        0 0 16px rgba(210, 108, 149, 0.65);
+}
+
+.titulo-dulce h1 {
+    max-width: 650px;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 43px;
+
+    line-height: 1.15;
+
+    color: #593541;
+
+    text-shadow:
+        0 0 4px white,
+        0 0 8px rgba(238, 169, 195, 0.65);
+}
+
+.hero-description {
+    max-width: 590px;
+
+    margin: 19px auto;
+
+    font-size: 16px;
+
+    color: #765b66;
+}
+
+
+/* ==========================================
+   BOTÓN
+   ========================================== */
+
+.btn {
+    display: inline-block;
+
+    padding: 11px 25px;
+
+    border: none;
+
+    border-radius: 25px;
+
+    background: #c45d88;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 5px 16px rgba(196, 93, 136, 0.28);
+
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #ad4d76;
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 8px 20px rgba(196, 93, 136, 0.38);
+}
+
+
+/* ==========================================
+   SECCIONES
+   ========================================== */
+
+.section {
+    max-width: 1200px;
+
+    margin: auto;
+
+    padding: 70px 25px;
+
+    text-align: center;
+}
+
+.section h2,
+.about h2 {
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 32px;
+
+    color: #693c4d;
+
+    margin-bottom: 8px;
+
+    text-shadow:
+        0 0 3px white,
+        0 0 8px rgba(238, 169, 195, 0.65);
+}
+
+.intro {
+    max-width: 600px;
+
+    margin: 0 auto 25px;
+
+    color: #765d67;
+
+    font-size: 15px;
+}
+
+
+/* ==========================================
+   CATEGORÍAS
+   ========================================== */
+
+.filters {
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin: 25px 0 35px;
+}
+
+.filter {
+    padding: 10px 22px;
+
+    border: 1px solid #dfa2ba;
+
+    border-radius: 22px;
+
+    background: #ffffff;
+
+    color: #a54d73;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.filter:hover {
+    background: #fce1eb;
+
+    color: #963f66;
+
+    box-shadow:
+        0 0 10px rgba(221, 139, 171, 0.35);
+
+    transform: translateY(-2px);
+}
+
+.filter.active {
+    background: #c45d88;
+
+    color: white;
+
+    border-color: #c45d88;
+
+    box-shadow:
+        0 0 12px rgba(196, 93, 136, 0.35);
+}
+
+
+/* ==========================================
+   PRODUCTOS
+   ========================================== */
+
+.products {
+    display: grid;
+
+    grid-template-columns: repeat(5, 1fr);
+
+    gap: 16px;
+
+    width: 100%;
+
+    max-width: 1120px;
+
+    margin: 0 auto;
+}
+
+
+/* ==========================================
+   TARJETAS
+   ========================================== */
+
+.producto {
+    width: 100%;
+
+    background: #ffffff;
+
+    border-radius: 16px;
+
+    overflow: hidden;
+
+    border: 1px solid #edbfd2;
+
+    box-shadow:
+        0 6px 17px rgba(117, 55, 80, 0.10);
+
+    opacity: 0;
+
+    transform: translateY(18px);
+
+    animation:
+        aparecerProducto 0.5s ease forwards;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+/* Efecto de elevación */
+
+.producto:hover {
+    transform: translateY(-7px);
+
+    box-shadow:
+        0 14px 27px rgba(117, 55, 80, 0.17);
+}
+
+
+/* ==========================================
+   IMAGEN DE PRODUCTO
+   ========================================== */
+
+.imagen-producto {
+    width: 100%;
+
+    height: 175px;
+
+    overflow: hidden;
+
+    background: #fceaf1;
+}
+
+.imagen-producto img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition: transform 0.45s ease;
+}
+
+
+/* Zoom */
+
+.producto:hover .imagen-producto img {
+    transform: scale(1.08);
+}
+
+
+/* ==========================================
+   INFORMACIÓN
+   ========================================== */
+
+.info-producto {
+    padding: 14px;
+
+    text-align: left;
+}
+
+.info-producto h4 {
+    font-family: Georgia, "Times New Roman", serif;
+
+    color: #8e4563;
+
+    font-size: 17px;
+
+    line-height: 1.25;
+
+    margin-bottom: 7px;
+
+    text-shadow:
+        0 0 3px white,
+        0 0 6px #f2b4ca;
+}
+
+.info-producto p {
+    color: #76616a;
+
+    font-size: 12px;
+
+    line-height: 1.45;
+
+    min-height: 70px;
+
+    margin-bottom: 8px;
+}
+
+.precio {
+    display: block;
+
+    color: #b04f78;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    line-height: 1.6;
+}
+
+
+/* ==========================================
+   ANIMACIÓN
+   ========================================== */
+
+@keyframes aparecerProducto {
+
+    from {
+        opacity: 0;
+
+        transform: translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+
+}
+
+
+/* ==========================================
+   NOSOTROS
+   ========================================== */
+
+.about {
+    max-width: 1050px;
+
+    margin: 30px auto 70px;
+
+    padding: 55px 6%;
+
+    display: grid;
+
+    grid-template-columns: 1.4fr 1fr;
+
+    gap: 45px;
+
+    align-items: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fde7ef,
+            #fff4f8
+        );
+
+    border: 1px solid #f1cbd9;
+
+    border-radius: 22px;
+}
+
+.about h2 {
+    margin-bottom: 15px;
+}
+
+.about p {
+    color: #705a63;
+
+    font-size: 15px;
+
+    margin-bottom: 15px;
+}
+
+.about ul {
+    list-style: none;
+}
+
+.about li {
+    margin: 7px 0;
+
+    color: #a14e72;
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+
+/* ==========================================
+   TARJETA NOSOTROS
+   ========================================== */
+
+.about-card {
+    background: white;
+
+    padding: 35px 25px;
+
+    border-radius: 18px;
+
+    text-align: center;
+
+    border: 1px solid #efc8d7;
+
+    box-shadow:
+        0 7px 20px rgba(117, 55, 80, 0.09);
+}
+
+
+/* ==========================================
+   IMAGEN DE CONÓCENOS
+   ========================================== */
+
+.about-image {
+    width: 100%;
+
+    height: 210px;
+
+    overflow: hidden;
+
+    border-radius: 14px;
+
+    margin-bottom: 18px;
+
+    border: 1px solid #efc2d3;
+
+    box-shadow:
+        0 5px 15px rgba(117, 55, 80, 0.12);
+}
+
+.about-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition: transform 0.4s ease;
+}
+
+.about-card:hover .about-image img {
+    transform: scale(1.06);
+}
+
+
+/* ==========================================
+   TÍTULO DE TARJETA NOSOTROS
+   ========================================== */
+
+.about-card h3 {
+    color: #914462;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 22px;
+
+    margin-bottom: 7px;
+}
+
+
+/* ==========================================
+   CONTACTO
+   ========================================== */
+
+.contact {
+    max-width: 750px;
+}
+
+.contact form {
+    margin-top: 25px;
+
+    padding: 30px;
+
+    background: white;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 7px 22px rgba(117, 55, 80, 0.09);
+
+    border: 1px solid #efcbd9;
+
+    text-align: left;
+}
+
+.contact label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    margin-top: 15px;
+
+    color: #704254;
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+.contact label:first-child {
+    margin-top: 0;
+}
+
+.contact input,
+.contact select,
+.contact textarea {
+    width: 100%;
+
+    padding: 11px 13px;
+
+    border: 1px solid #e0aec1;
+
+    border-radius: 9px;
+
+    background: #fff9fb;
+
+    color: #563c46;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    outline: none;
+
+    transition: 0.3s;
+}
+
+.contact input:focus,
+.contact select:focus,
+.contact textarea:focus {
+    border-color: #c45d88;
+
+    box-shadow:
+        0 0 0 3px rgba(196, 93, 136, 0.12);
+}
+
+.contact textarea {
+    resize: vertical;
+
+    margin-bottom: 18px;
+}
+
+.form-message {
+    margin-top: 13px;
+
+    text-align: center;
+
+    color: #a34d72;
+
+    font-weight: 600;
+}
+
+
+/* ==========================================
+   FOOTER
+   ========================================== */
+
+footer {
+    padding: 22px 15px;
+
+    text-align: center;
+
+    background: #713f52;
+
+    color: white;
+
+    font-size: 13px;
+}
+
+
+/* ==========================================
+   TABLET
+   ========================================== */
+
+@media (max-width: 1050px) {
+
+    .products {
+        grid-template-columns: repeat(3, 1fr);
+
+        max-width: 800px;
+    }
+
+}
+
+
+/* ==========================================
+   TABLET PEQUEÑA
+   ========================================== */
+
+@media (max-width: 750px) {
+
+    .products {
+        grid-template-columns: repeat(2, 1fr);
+
+        max-width: 520px;
+
+        gap: 18px;
+    }
+
+    .about {
+        grid-template-columns: 1fr;
+    }
+
+    .titulo-dulce h1 {
+        font-size: 38px;
+    }
+
+}
+
+
+/* ==========================================
+   CELULAR
+   ========================================== */
+
+@media (max-width: 550px) {
+
+    .navbar {
+        padding: 15px 5%;
+    }
+
+    .logo {
+        font-size: 21px;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+
+        position: absolute;
+
+        top: 100%;
+        left: 0;
+
+        width: 100%;
+
+        padding: 18px;
+
+        background: white;
+
+        flex-direction: column;
+
+        gap: 15px;
+
+        text-align: center;
+
+        box-shadow:
+            0 8px 18px rgba(0, 0, 0, 0.08);
+    }
+
+    .nav-links.show {
+        display: flex;
+    }
+
+    .hero {
+        min-height: 550px;
+    }
+
+    .hero-content {
+        padding: 65px 18px;
+    }
+
+    .hero-logo span {
+        font-size: 25px;
+    }
+
+    .logo-box {
+        min-width: 250px;
+
+        padding: 9px 18px;
+
+        gap: 10px;
+    }
+
+    .logo-icon {
+        width: 50px;
+        height: 50px;
+    }
+
+    .titulo-dulce {
+        gap: 7px;
+    }
+
+    .titulo-dulce h1 {
+        font-size: 32px;
+    }
+
+    .titulo-dulce span {
+        font-size: 17px;
+    }
+
+    .hero-description {
+        font-size: 15px;
+    }
+
+    .section {
+        padding: 55px 15px;
+    }
+
+    .section h2,
+    .about h2 {
+        font-size: 28px;
+    }
+
+    .products {
+        grid-template-columns: 1fr;
+
+        max-width: 300px;
+
+        gap: 18px;
+    }
+
+    .producto {
+        width: 100%;
+    }
+
+    .imagen-producto {
+        height: 190px;
+    }
+
+    .about {
+        margin: 20px 5% 50px;
+
+        padding: 40px 22px;
+    }
+
+    .contact form {
+        padding: 23px 18px;
+    }
+
+}
+
+
+/* ==========================================
+   CELULARES PEQUEÑOS
+   ========================================== */
+
+@media (max-width: 400px) {
+
+    .hero-logo {
+        flex-direction: column;
+    }
+
+    .logo-box {
+        min-width: 235px;
+    }
+
+    .titulo-dulce h1 {
+        font-size: 28px;
+    }
+
+    .filter {
+        padding: 8px 15px;
+
+        font-size: 13px;
+    }
+
+}
