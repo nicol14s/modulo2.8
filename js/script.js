@@ -1,458 +1,1356 @@
-/* ==========================================
-   DULCE ENCANTO
-   JAVASCRIPT
-   ========================================== */
+// ==========================================
+// ATRAPA LOS CUPCAKES
+// ==========================================
 
 
-/* ==========================================
-   PRODUCTOS
-   ========================================== */
+// ------------------------------
+// ELEMENTOS
+// ------------------------------
 
-const productos = [
+const inicio = document.getElementById("inicio");
+const juego = document.getElementById("juego");
 
-    /* --------------------------------------
-       PASTELES - 5
-       -------------------------------------- */
+const btnStart = document.getElementById("btnStart");
+const btnJugar = document.getElementById("btnJugar");
 
-    {
-        nombre: "Strawberry Candy Cake",
-        categoria: "pasteles",
-        imagen: "img/Strawberry Candy Cake.jfif",
-        descripcion: "Suave pastel de vainilla relleno con fresas frescas y crema, decorado con una deliciosa cobertura.",
-        porcion: "$2.00",
-        entero: "$22.00"
-    },
+const modalInstrucciones =
+    document.getElementById("modalInstrucciones");
 
-    {
-        nombre: "Chocolate Dream Cake",
-        categoria: "pasteles",
-        imagen: "img/Chocolate Dream Cake.jfif",
-        descripcion: "Delicioso pastel de chocolate con relleno cremoso y una cobertura de chocolate irresistible.",
-        porcion: "$2.50",
-        entero: "$25.00"
-    },
+const modalResultado =
+    document.getElementById("modalResultado");
 
-    {
-        nombre: "Golden Caramel Crunch Cake",
-        categoria: "pasteles",
-        imagen: "img/Golden Caramel Crunch Cake.jfif",
-        descripcion: "Pastel de chocolate relleno con caramelo cremoso y trozos crujientes, cubierto con una suave crema de chocolate y un irresistible toque de caramelo.",
-        porcion: "$2.50",
-        entero: "$25.00"
-    },
+const modalPausa =
+    document.getElementById("modalPausa");
 
-    {
-        nombre: "Peach Paradise Cake",
-        categoria: "pasteles",
-        imagen: "img/Peach Paradise Cake.jfif",
-        descripcion: "Esponjoso pastel de vainilla relleno con crema y duraznos dulces, decorado con una ligera cobertura que realza su sabor fresco y afrutado.",
-        porcion: "$2.25",
-        entero: "$23.00"
-    },
+const modalPremioPequeno =
+    document.getElementById("modalPremioPequeno");
 
-    {
-        nombre: "Cream Dream Cake",
-        categoria: "pasteles",
-        imagen: "img/Cream Dream Cake.jfif",
-        descripcion: "Delicioso pastel de chocolate y vainilla combinado con galletas tipo Oreo, relleno de una suave crema que lo convierte en el favorito de los amantes de las galletas.",
-        porcion: "$2.50",
-        entero: "$25.00"
-    },
+const btnSeguir =
+    document.getElementById("btnSeguir");
+
+const btnQuedarse =
+    document.getElementById("btnQuedarse");
+
+const areaJuego =
+    document.getElementById("areaJuego");
+
+const cesta =
+    document.getElementById("cesta");
+
+const puntosTexto =
+    document.getElementById("puntos");
+
+const vidasTexto =
+    document.getElementById("vidas");
+
+const nivelTexto =
+    document.getElementById("nivel");
+
+const tiempoTexto =
+    document.getElementById("tiempo");
+
+const progreso =
+    document.getElementById("progreso");
 
 
-    /* --------------------------------------
-       CUPCAKES - 5
-       -------------------------------------- */
+// ------------------------------
+// VARIABLES
+// ------------------------------
 
-    {
-        nombre: "Chocolate Strawberry Delight",
-        categoria: "cupcakes",
-        imagen: "img/Chocolate Strawberry Delight.jfif",
-        descripcion: "Cupcake de chocolate con fresa cubierta de chocolate",
-        porcion: "$1.25"
-    },
+let puntos = 0;
+let vidas = 3;
+let nivel = 1;
 
-    {
-        nombre: "Black Forest Cherry Cupcake",
-        categoria: "cupcakes",
-        imagen: "img/Black Forest Cherry Cupcake.jfif",
-        descripcion: "Relleno de chocolate cremoso..",
-        porcion: "$1.50"
-    },
+let tiempo = 180;
 
-    {
-        nombre: "Peanut Butter Crunch Cupcake",
-        categoria: "cupcakes",
-        imagen: "img/Peanut Butter Crunch Cupcake.jfif",
-        descripcion: "Cupcake de chocolate con frosting de mantequilla de maní",
-        porcion: "$1.25"
-    },
+let jugando = false;
+let pausado = false;
 
-    {
-        nombre: "Red Velvet Bliss",
-        categoria: "cupcakes",
-        imagen: "img/Red Velvet Bliss.jfif",
-        descripcion: "Cupcake Red Velvet con frosting de queso crema",
-        porcion: "$1.50"
-    },
+let posicionCesta = 0.5;
 
-    {
-        nombre: "Vanilla Cloud Cupcake",
-        categoria: "cupcakes",
-        imagen: "img/Vanilla Cloud Cupcake.jfif",
-        descripcion: "Perfecto para fiestas y celebraciones.",
-        porcion: "$1.50"
-    },
+let objetos = [];
+
+let intervaloObjetos;
+let intervaloTiempo;
+
+let animacion;
+
+let ultimoTiempo = 0;
+
+let premioPequenoMostrado = false;
+
+// Control de cuenta regresiva
+let cuentaRegresiva = false;
+let temporizadorCuentaRegresiva = null;
+
+// Control del mensaje de nivel
+let temporizadorMensaje = null;
 
 
-    /* --------------------------------------
-       POSTRES - 5
-       -------------------------------------- */
+// ------------------------------
+// BOTÓN START
+// ------------------------------
 
-    {
-        nombre: "Pink Paradise Cheesecake",
-        categoria: "postres",
-        imagen: "img/Pink Paradise Cheesecake.jfif",
-        descripcion: "Nuestro cheesecake clásico cubierto con una deliciosa salsa de fresa y fresas frescas, logrando el equilibrio perfecto entre dulzura y frescura.",
-        porcion: "$1.95",
-        entero: "$20.00"
-    },
+btnStart.addEventListener("click", () => {
 
-    {
-        nombre: "Classic Chocolate Brownie",
-        categoria: "postres",
-        imagen: "img/Classic Chocolate Brownie.jfif",
-        descripcion: "Delicioso brownie de chocolate con una generosa cobertura de chocolate cremoso. Ideal para los amantes del cacao y los sabores intensos.",
-        porcion: "$1.50",
-        entero: "$12.00"
-    },
+    modalInstrucciones.classList.remove("oculto");
 
-    {
-        nombre: "Golden Zest Cheesecake",
-        categoria: "postres",
-        imagen: "img/Golden Zest Cheesecake.jfif",
-        descripcion: "Cheesecake suave y cremoso con un refrescante toque de limón, ideal para quienes disfrutan de sabores cítricos y ligeros.",
-        porcion: "$1.50",
-        entero:"18.00"
-    },
-
-    {
-        nombre: "Fresas con Crema",
-        categoria: "postres",
-        imagen: "img/fresas con crema.jfif",
-        descripcion: "Fresas frescas acompañadas de una suave y deliciosa crema.",
-        porcion: "$2.00"
-    },
-
-    {
-        nombre: "Cookies & Cream Cookie",
-        categoria: "postres",
-        imagen: "img/Cookies & Cream Cookie.jfif",
-        descripcion: "Deliciosa cookie con cremosa cobertura de vainilla y trozos de Oreo triturada para un equilibrio perfecto entre dulzura y textura",
-        porcion: "$1.75"
-    }
-
-];
+});
 
 
-/* ==========================================
-   CONTENEDOR
-   ========================================== */
+// ------------------------------
+// CERRAR INSTRUCCIONES
+// ------------------------------
 
-const productContainer =
-    document.getElementById("productContainer");
+document
+    .getElementById("cerrarInstrucciones")
+    .addEventListener("click", () => {
 
+        modalInstrucciones.classList.add("oculto");
 
-/* ==========================================
-   CREAR TARJETA
-   ========================================== */
-
-function crearTarjeta(producto, posicion) {
-
-    const tarjeta = document.createElement("div");
-
-    tarjeta.classList.add("producto");
-
-    tarjeta.style.animationDelay =
-        `${posicion * 0.08}s`;
+    });
 
 
-    tarjeta.innerHTML = `
+// ------------------------------
+// COMENZAR JUEGO
+// ------------------------------
 
-        <div class="imagen-producto">
-
-            <img
-                src="${producto.imagen}"
-                alt="${producto.nombre}"
-            >
-
-        </div>
+btnJugar.addEventListener("click", iniciarJuego);
 
 
-        <div class="info-producto">
+function iniciarJuego() {
 
-            <h4>
-                ${producto.nombre}
-            </h4>
+    clearTimeout(temporizadorCuentaRegresiva);
+    clearTimeout(temporizadorMensaje);
 
+    cuentaRegresiva = false;
 
-            <p>
-                ${producto.descripcion}
-            </p>
-
-
-            <span class="precio">
-
-                Porción: ${producto.porcion}
-
-                ${
-                    producto.entero
-                    ? `<br>Entero: ${producto.entero}`
-                    : ""
-                }
-
-            </span>
-
-        </div>
-
-    `;
+    modalInstrucciones.classList.add("oculto");
+    modalResultado.classList.add("oculto");
+    modalPausa.classList.add("oculto");
+    modalPremioPequeno.classList.add("oculto");
 
 
-    return tarjeta;
+    inicio.classList.add("oculto");
+    juego.classList.remove("oculto");
+
+
+    puntos = 0;
+    vidas = 3;
+    nivel = 1;
+
+    tiempo = 180;
+
+    posicionCesta = 0.5;
+
+    jugando = true;
+    pausado = false;
+
+    premioPequenoMostrado = false;
+
+
+    objetos.forEach(objeto => {
+
+        objeto.elemento.remove();
+
+    });
+
+    objetos = [];
+
+
+    actualizarMarcador();
+
+    colocarCesta();
+
+    mostrarNivel();
+
+
+    clearInterval(intervaloObjetos);
+    clearInterval(intervaloTiempo);
+
+    intervaloObjetos =
+        setInterval(crearCupcake, 700);
+
+    intervaloTiempo =
+        setInterval(contarTiempo, 1000);
+
+
+    ultimoTiempo = performance.now();
+
+    cancelAnimationFrame(animacion);
+
+    animacion =
+        requestAnimationFrame(bucleJuego);
 }
 
 
-/* ==========================================
-   MOSTRAR UNA CATEGORÍA
-   ========================================== */
+// ------------------------------
+// MARCADOR
+// ------------------------------
 
-function mostrarCategoria(categoria) {
+function actualizarMarcador() {
 
-    productContainer.innerHTML = "";
+    puntosTexto.textContent = puntos;
+    vidasTexto.textContent = vidas;
+    nivelTexto.textContent = nivel;
+    tiempoTexto.textContent = tiempo;
 
 
-    const productosFiltrados =
-        productos.filter(
-            producto =>
-                producto.categoria === categoria
+    let porcentaje =
+        Math.min((puntos / 250) * 100, 100);
+
+    progreso.style.width =
+        porcentaje + "%";
+}
+
+
+// ------------------------------
+// CREAR CUPCAKE
+// ------------------------------
+
+function crearCupcake() {
+
+    if (!jugando || pausado || cuentaRegresiva) {
+        return;
+    }
+
+
+    let numero =
+        Math.random();
+
+
+    let tipo = "bueno";
+
+
+    if (nivel >= 2 && numero < 0.20) {
+
+        tipo = "podrido";
+
+    }
+
+
+    if (nivel >= 4 && numero < 0.08) {
+
+        tipo = "bomba";
+
+    }
+
+
+    if (nivel >= 6 && numero < 0.14) {
+
+        tipo = "bomba";
+
+    }
+
+
+    const elemento =
+        document.createElement("img");
+
+
+    elemento.classList.add("objeto");
+
+
+    if (tipo === "bueno") {
+
+        elemento.src =
+            "img/cupcake.png";
+
+    }
+
+    else if (tipo === "podrido") {
+
+        elemento.src =
+            "img/cupcake_podrido.png";
+
+        elemento.classList.add("podrido");
+
+    }
+
+    else {
+
+        elemento.src =
+            "img/bomba_cupcake.png";
+
+        elemento.classList.add("bomba");
+
+    }
+
+
+    let x =
+        Math.random() *
+        (areaJuego.clientWidth - 70);
+
+    let y = -70;
+
+
+    elemento.style.left =
+        x + "px";
+
+    elemento.style.top =
+        y + "px";
+
+
+    areaJuego.appendChild(elemento);
+
+
+    objetos.push({
+
+        elemento: elemento,
+
+        tipo: tipo,
+
+        x: x,
+
+        y: y,
+
+        velocidad:
+            150 +
+            nivel * 30 +
+            Math.random() * 70,
+
+        movimiento:
+            (Math.random() - 0.5) *
+            (10 + nivel * 2)
+
+    });
+
+}
+
+
+// ------------------------------
+// BUCLE DEL JUEGO
+// ------------------------------
+
+function bucleJuego(ahora) {
+
+    if (!jugando) {
+
+        return;
+
+    }
+
+
+    let delta =
+        Math.min(
+            (ahora - ultimoTiempo) / 1000,
+            0.035
         );
 
 
-    productosFiltrados.forEach(
-        (producto, index) => {
-
-            const tarjeta =
-                crearTarjeta(
-                    producto,
-                    index
-                );
-
-            productContainer.appendChild(
-                tarjeta
-            );
-
-        }
-    );
-}
+    ultimoTiempo = ahora;
 
 
-/* ==========================================
-   MOSTRAR TODOS
-   ========================================== */
+    if (!pausado) {
 
-function mostrarTodos() {
+        for (
+            let i = objetos.length - 1;
+            i >= 0;
+            i--
+        ) {
 
-    productContainer.innerHTML = "";
-
-
-    /*
-       El arreglo ya está ordenado así:
-
-       1. 5 pasteles
-       2. 5 cupcakes
-       3. 5 postres
-    */
+            let objeto =
+                objetos[i];
 
 
-    productos.forEach(
-        (producto, index) => {
-
-            const tarjeta =
-                crearTarjeta(
-                    producto,
-                    index
-                );
-
-            productContainer.appendChild(
-                tarjeta
-            );
-
-        }
-    );
-}
+            objeto.y +=
+                objeto.velocidad * delta;
 
 
-/* ==========================================
-   BOTONES DE CATEGORÍAS
-   ========================================== */
-
-const filtros =
-    document.querySelectorAll(".filter");
+            objeto.x +=
+                objeto.movimiento * delta;
 
 
-filtros.forEach(
-    boton => {
+            if (
+                objeto.x < 0 ||
+                objeto.x >
+                areaJuego.clientWidth - 70
+            ) {
 
-        boton.addEventListener(
-            "click",
-            function () {
-
-
-                /* Quitar active */
-
-                filtros.forEach(
-                    btn => {
-
-                        btn.classList.remove(
-                            "active"
-                        );
-
-                    }
-                );
-
-
-                /* Activar botón seleccionado */
-
-                this.classList.add("active");
-
-
-                /* Obtener categoría */
-
-                const categoria =
-                    this.dataset.category;
-
-
-                /* Mostrar productos */
-
-                if (categoria === "todos") {
-
-                    mostrarTodos();
-
-                } else {
-
-                    mostrarCategoria(
-                        categoria
-                    );
-
-                }
+                objeto.movimiento *= -1;
 
             }
+
+
+            objeto.elemento.style.left =
+                objeto.x + "px";
+
+            objeto.elemento.style.top =
+                objeto.y + "px";
+
+
+            if (objetoAtrapado(objeto)) {
+
+                objeto.elemento.remove();
+
+                objetos.splice(i, 1);
+
+                procesarObjeto(objeto);
+
+            }
+
+
+            else if (
+                objeto.y >
+                areaJuego.clientHeight + 80
+            ) {
+
+                objeto.elemento.remove();
+
+                objetos.splice(i, 1);
+
+            }
+
+        }
+
+    }
+
+
+    animacion =
+        requestAnimationFrame(bucleJuego);
+}
+
+
+// ------------------------------
+// DETECTAR ATRAPE
+// ------------------------------
+
+function objetoAtrapado(objeto) {
+
+    const rectObjeto =
+        objeto.elemento.getBoundingClientRect();
+
+    const rectCesta =
+        cesta.getBoundingClientRect();
+
+
+    return (
+
+        rectObjeto.bottom >=
+        rectCesta.top &&
+
+        rectObjeto.left <
+        rectCesta.right &&
+
+        rectObjeto.right >
+        rectCesta.left &&
+
+        rectObjeto.top <
+        rectCesta.bottom
+
+    );
+
+}
+
+
+// ------------------------------
+// PROCESAR OBJETO
+// ------------------------------
+
+function procesarObjeto(objeto) {
+
+
+    if (objeto.tipo === "bueno") {
+
+        puntos += 10;
+
+        mostrarPuntos(
+            "+10",
+            objeto.x,
+            objeto.y
+        );
+
+    }
+
+
+    if (objeto.tipo === "podrido") {
+
+        puntos =
+            Math.max(0, puntos - 15);
+
+        vidas--;
+
+
+        mostrarPuntos(
+            "-15",
+            objeto.x,
+            objeto.y
+        );
+
+
+        if (vidas <= 0) {
+
+            terminarJuego("vidas");
+
+            return;
+
+        }
+
+    }
+
+
+    if (objeto.tipo === "bomba") {
+
+        terminarJuego("bomba");
+
+        return;
+
+    }
+
+
+    actualizarNivel();
+
+    actualizarMarcador();
+
+
+    // ------------------------------
+    // PREMIO PEQUEÑO: 150 PUNTOS
+    // ------------------------------
+
+    if (
+        puntos >= 150 &&
+        !premioPequenoMostrado
+    ) {
+
+        premioPequenoMostrado = true;
+
+        pausado = true;
+
+        modalPremioPequeno.classList.remove(
+            "oculto"
+        );
+
+        return;
+
+    }
+
+
+    // ------------------------------
+    // PREMIO MAYOR: 250 PUNTOS
+    // ------------------------------
+
+    if (puntos >= 250) {
+
+        terminarJuego("premio");
+
+    }
+
+}
+
+
+// ------------------------------
+// BOTÓN SEGUIR JUGANDO
+// ------------------------------
+
+btnSeguir.addEventListener("click", () => {
+
+    modalPremioPequeno.classList.add(
+        "oculto"
+    );
+
+    iniciarCuentaRegresiva();
+
+});
+
+
+// ------------------------------
+// CUENTA REGRESIVA
+// ------------------------------
+
+function iniciarCuentaRegresiva() {
+
+    if (!jugando) {
+        return;
+    }
+
+    clearTimeout(temporizadorCuentaRegresiva);
+
+    cuentaRegresiva = true;
+    pausado = true;
+
+    // Quitar cupcakes que estaban cayendo
+    // para comenzar limpio después del aviso.
+    objetos.forEach(objeto => {
+
+        objeto.elemento.remove();
+
+    });
+
+    objetos = [];
+
+    // Reiniciar el intervalo para que no
+    // aparezca un cupcake inmediatamente.
+    clearInterval(intervaloObjetos);
+
+
+    const mensaje =
+        document.getElementById("mensajeNivel");
+
+    let numero = 3;
+
+
+    function mostrarCuenta() {
+
+        if (!jugando) {
+            return;
+        }
+
+
+        mensaje.classList.remove("oculto");
+
+        mensaje.textContent =
+            numero;
+
+
+        if (numero > 0) {
+
+            numero--;
+
+            temporizadorCuentaRegresiva =
+                setTimeout(
+                    mostrarCuenta,
+                    800
+                );
+
+        }
+
+        else {
+
+            mensaje.textContent =
+                "¡A JUGAR!";
+
+
+            temporizadorCuentaRegresiva =
+                setTimeout(() => {
+
+                    mensaje.classList.add(
+                        "oculto"
+                    );
+
+                    cuentaRegresiva = false;
+                    pausado = false;
+
+                    ultimoTiempo =
+                        performance.now();
+
+
+                    // Volver a iniciar la caída
+                    // respetando el nivel actual.
+                    intervaloObjetos =
+                        setInterval(
+                            crearCupcake,
+                            Math.max(
+                                300,
+                                720 - nivel * 55
+                            )
+                        );
+
+                }, 800);
+
+        }
+
+    }
+
+
+    mostrarCuenta();
+
+}
+
+
+// ------------------------------
+// BOTÓN QUEDARSE CON EL PREMIO
+// ------------------------------
+
+btnQuedarse.addEventListener("click", () => {
+
+    modalPremioPequeno.classList.add(
+        "oculto"
+    );
+
+    pausado = false;
+
+    terminarJuego("premioPequeno");
+
+});
+
+
+// ------------------------------
+// CAMBIAR NIVEL
+// ------------------------------
+
+function actualizarNivel() {
+
+    let nuevoNivel =
+        Math.min(
+            8,
+            Math.floor(puntos / 25) + 1
+        );
+
+
+    if (nuevoNivel !== nivel) {
+
+        nivel = nuevoNivel;
+
+
+        clearInterval(intervaloObjetos);
+
+
+        intervaloObjetos =
+            setInterval(
+                crearCupcake,
+                Math.max(
+                    300,
+                    720 - nivel * 55
+                )
+            );
+
+
+        mostrarNivel();
+
+    }
+
+}
+
+
+// ------------------------------
+// MENSAJE DE NIVEL
+// ------------------------------
+
+function mostrarNivel() {
+
+    const mensaje =
+        document.getElementById(
+            "mensajeNivel"
+        );
+
+
+    clearTimeout(temporizadorMensaje);
+
+
+    mensaje.textContent =
+        "⚡ NIVEL " + nivel;
+
+
+    mensaje.classList.remove(
+        "oculto"
+    );
+
+
+    temporizadorMensaje =
+        setTimeout(() => {
+
+            mensaje.classList.add(
+                "oculto"
+            );
+
+        }, 1400);
+
+}
+
+
+// ------------------------------
+// MOSTRAR +10 / -15
+// ------------------------------
+
+function mostrarPuntos(texto, x, y) {
+
+    const mensaje =
+        document.createElement("div");
+
+
+    mensaje.textContent = texto;
+
+
+    mensaje.style.position =
+        "absolute";
+
+    mensaje.style.left =
+        x + "px";
+
+    mensaje.style.top =
+        y + "px";
+
+    mensaje.style.zIndex = "100";
+
+    mensaje.style.color =
+        "#a34f70";
+
+    mensaje.style.fontFamily =
+        "Baloo 2";
+
+    mensaje.style.fontSize =
+        "30px";
+
+    mensaje.style.fontWeight =
+        "800";
+
+    mensaje.style.pointerEvents =
+        "none";
+
+
+    areaJuego.appendChild(
+        mensaje
+    );
+
+
+    mensaje.animate(
+
+        [
+            {
+                transform:
+                    "translateY(0)",
+                opacity: 1
+            },
+
+            {
+                transform:
+                    "translateY(-45px)",
+                opacity: 0
+            }
+
+        ],
+
+        {
+            duration: 700
+        }
+
+    );
+
+
+    setTimeout(() => {
+
+        mensaje.remove();
+
+    }, 700);
+
+}
+
+
+// ------------------------------
+// CESTA
+// ------------------------------
+
+function colocarCesta() {
+
+    const ancho =
+        areaJuego.clientWidth;
+
+
+    cesta.style.left =
+        posicionCesta *
+        ancho +
+        "px";
+
+}
+
+
+function moverCesta(direccion) {
+
+    if (!jugando || pausado || cuentaRegresiva) {
+        return;
+    }
+
+
+    posicionCesta +=
+        direccion;
+
+
+    posicionCesta =
+        Math.max(
+            0.07,
+            Math.min(
+                0.93,
+                posicionCesta
+            )
+        );
+
+
+    colocarCesta();
+
+}
+
+
+// ------------------------------
+// TECLADO
+// ------------------------------
+
+document.addEventListener(
+    "keydown",
+    evento => {
+
+        if (
+            evento.key === "ArrowLeft" ||
+            evento.key.toLowerCase() === "a"
+        ) {
+
+            moverCesta(-0.07);
+
+        }
+
+
+        if (
+            evento.key === "ArrowRight" ||
+            evento.key.toLowerCase() === "d"
+        ) {
+
+            moverCesta(0.07);
+
+        }
+
+
+        if (evento.code === "Space") {
+
+            pausarJuego();
+
+        }
+
+    }
+);
+
+
+// ------------------------------
+// BOTONES MÓVILES
+// ------------------------------
+
+document
+    .getElementById("izquierda")
+    .addEventListener(
+        "pointerdown",
+        evento => {
+
+            evento.preventDefault();
+
+            moverCesta(-0.09);
+
+        }
+    );
+
+
+document
+    .getElementById("derecha")
+    .addEventListener(
+        "pointerdown",
+        evento => {
+
+            evento.preventDefault();
+
+            moverCesta(0.09);
+
+        }
+    );
+
+
+// ------------------------------
+// MOVER CON EL DEDO
+// ------------------------------
+
+let arrastrando = false;
+
+
+areaJuego.addEventListener(
+    "pointerdown",
+    evento => {
+
+        if (!jugando || pausado || cuentaRegresiva) {
+            return;
+        }
+
+        evento.preventDefault();
+
+        arrastrando = true;
+
+        if (areaJuego.setPointerCapture) {
+            areaJuego.setPointerCapture(evento.pointerId);
+        }
+
+        moverCestaAlPunto(
+            evento.clientX
         );
 
     }
 );
 
 
-/* ==========================================
-   IMPORTANTE
-   ========================================== */
+areaJuego.addEventListener(
+    "pointermove",
+    evento => {
 
-/*
-   Cuando se abre la página:
+        if (!arrastrando) {
+            return;
+        }
 
-   NO SE MUESTRA NINGÚN PRODUCTO.
-*/
+        evento.preventDefault();
 
-productContainer.innerHTML = "";
+        moverCestaAlPunto(
+            evento.clientX
+        );
 
-
-/* ==========================================
-   MENÚ PARA CELULAR
-   ========================================== */
-
-const menuBtn =
-    document.getElementById("menuBtn");
-
-const navLinks =
-    document.getElementById("navLinks");
+    }
+);
 
 
-if (menuBtn && navLinks) {
+areaJuego.addEventListener(
+    "pointerup",
+    evento => {
 
-    menuBtn.addEventListener(
+        arrastrando = false;
+
+        if (
+            areaJuego.releasePointerCapture &&
+            areaJuego.hasPointerCapture(evento.pointerId)
+        ) {
+            areaJuego.releasePointerCapture(
+                evento.pointerId
+            );
+        }
+
+    }
+);
+
+
+areaJuego.addEventListener(
+    "pointercancel",
+    () => {
+
+        arrastrando = false;
+
+    }
+);
+
+
+window.addEventListener(
+    "pointerup",
+    () => {
+
+        arrastrando = false;
+
+    }
+);
+
+
+function moverCestaAlPunto(x) {
+
+    const rect =
+        areaJuego.getBoundingClientRect();
+
+
+    posicionCesta =
+        (x - rect.left) /
+        rect.width;
+
+
+    posicionCesta =
+        Math.max(
+            0.07,
+            Math.min(
+                0.93,
+                posicionCesta
+            )
+        );
+
+
+    colocarCesta();
+
+}
+
+
+// ------------------------------
+// TIEMPO
+// ------------------------------
+
+function contarTiempo() {
+
+    if (!jugando || pausado || cuentaRegresiva) {
+        return;
+    }
+
+
+    tiempo--;
+
+    actualizarMarcador();
+
+
+    if (tiempo <= 0) {
+
+        terminarJuego("tiempo");
+
+    }
+
+}
+
+
+// ------------------------------
+// PAUSA
+// ------------------------------
+
+document
+    .getElementById("pausa")
+    .addEventListener(
         "click",
-        function () {
+        pausarJuego
+    );
 
-            navLinks.classList.toggle(
-                "show"
+
+document
+    .getElementById("continuar")
+    .addEventListener(
+        "click",
+        pausarJuego
+    );
+
+
+function pausarJuego() {
+
+    if (!jugando || cuentaRegresiva) {
+        return;
+    }
+
+
+    pausado = !pausado;
+
+
+    if (pausado) {
+
+        modalPausa.classList.remove(
+            "oculto"
+        );
+
+    }
+
+    else {
+
+        modalPausa.classList.add(
+            "oculto"
+        );
+
+        ultimoTiempo = performance.now();
+
+    }
+
+}
+
+
+// ------------------------------
+// REINICIAR
+// ------------------------------
+
+document
+    .getElementById("reiniciar")
+    .addEventListener(
+        "click",
+        iniciarJuego
+    );
+
+
+// ------------------------------
+// TERMINAR JUEGO
+// ------------------------------
+
+function terminarJuego(motivo) {
+
+    if (!jugando) {
+        return;
+    }
+
+
+    jugando = false;
+
+    cuentaRegresiva = false;
+
+    clearTimeout(temporizadorCuentaRegresiva);
+    clearTimeout(temporizadorMensaje);
+
+    clearInterval(intervaloObjetos);
+    clearInterval(intervaloTiempo);
+
+    cancelAnimationFrame(animacion);
+
+
+    objetos.forEach(objeto => {
+
+        objeto.elemento.remove();
+
+    });
+
+
+    objetos = [];
+
+
+    const icono =
+        document.getElementById(
+            "iconoResultado"
+        );
+
+    const titulo =
+        document.getElementById(
+            "tituloResultado"
+        );
+
+    const texto =
+        document.getElementById(
+            "textoResultado"
+        );
+
+    const puntuacion =
+        document.getElementById(
+            "puntuacionFinal"
+        );
+
+
+    puntuacion.textContent =
+        puntos;
+
+
+    if (motivo === "premio") {
+
+        icono.textContent = "🏆";
+
+        titulo.textContent =
+            "¡Felicidades, has ganado el premio mayor!";
+
+        texto.textContent =
+            "¡Llegaste a los 250 puntos! Has conseguido el premio mayor.";
+
+    }
+
+
+    else if (motivo === "premioPequeno") {
+
+        icono.textContent = "🎁";
+
+        titulo.textContent =
+            "¡Te quedaste con el premio pequeño!";
+
+        texto.textContent =
+            "¡Conseguiste 150 puntos y decidiste quedarte con el premio pequeño!";
+
+    }
+
+
+    else if (motivo === "bomba") {
+
+        icono.textContent = "💥";
+
+        titulo.textContent =
+            "Lo siento, perdiste.";
+
+        texto.textContent =
+            "La bomba cupcake cayó dentro de la cesta. ¡Ten más cuidado la próxima vez!";
+
+    }
+
+
+    else if (motivo === "vidas") {
+
+        if (puntos >= 150) {
+
+            icono.textContent = "🎁";
+
+            titulo.textContent =
+                "¡Has ganado el segundo premio!";
+
+            texto.textContent =
+                "Perdiste todas tus vidas, pero conseguiste 150 puntos o más para ganar el segundo premio.";
+
+        }
+
+        else {
+
+            icono.textContent = "😅";
+
+            titulo.textContent =
+                "¡Sigue intentando!";
+
+            texto.textContent =
+                "Necesitas conseguir al menos 150 puntos para ganar el segundo premio.";
+
+        }
+
+    }
+
+
+    else {
+
+        if (puntos >= 150) {
+
+            icono.textContent = "🎁";
+
+            titulo.textContent =
+                "¡Has ganado el segundo premio!";
+
+            texto.textContent =
+                "Se acabó el tiempo, pero lograste 150 puntos o más para conseguir el segundo premio.";
+
+        }
+
+        else {
+
+            icono.textContent = "⏰";
+
+            titulo.textContent =
+                "Se acabó el tiempo";
+
+            texto.textContent =
+                "¡Inténtalo nuevamente y trata de llegar a los 150 puntos!";
+
+        }
+
+    }
+
+
+    modalResultado.classList.remove(
+        "oculto"
+    );
+
+}
+
+
+// ------------------------------
+// BOTONES FINALES
+// ------------------------------
+
+document
+    .getElementById("btnReintentar")
+    .addEventListener(
+        "click",
+        iniciarJuego
+    );
+
+
+document
+    .getElementById("btnInicio")
+    .addEventListener(
+        "click",
+        () => {
+
+            clearTimeout(temporizadorCuentaRegresiva);
+
+            cuentaRegresiva = false;
+
+            modalResultado.classList.add(
+                "oculto"
+            );
+
+            modalPremioPequeno.classList.add(
+                "oculto"
+            );
+
+            juego.classList.add(
+                "oculto"
+            );
+
+            inicio.classList.remove(
+                "oculto"
             );
 
         }
     );
 
 
-    /* Cerrar menú al seleccionar una opción */
+// ------------------------------
+// AJUSTAR AL CAMBIAR TAMAÑO
+// ------------------------------
 
-    const enlaces =
-        navLinks.querySelectorAll("a");
-
-
-    enlaces.forEach(
-        enlace => {
-
-            enlace.addEventListener(
-                "click",
-                function () {
-
-                    navLinks.classList.remove(
-                        "show"
-                    );
-
-                }
-            );
-
-        }
-    );
-
-}
-
-
-/* ==========================================
-   FORMULARIO DE PEDIDO
-   ========================================== */
-
-const orderForm =
-    document.getElementById("orderForm");
-
-const formMessage =
-    document.getElementById("formMessage");
-
-
-if (orderForm && formMessage) {
-
-    orderForm.addEventListener(
-        "submit",
-        function (evento) {
-
-            evento.preventDefault();
-
-
-            const nombre =
-                document.getElementById(
-                    "nombre"
-                ).value;
-
-
-            formMessage.textContent =
-                `¡Gracias, ${nombre}! Tu solicitud ha sido recibida. Nos pondremos en contacto contigo.`;
-
-            formMessage.style.display =
-                "block";
-
-
-            orderForm.reset();
-
-        }
-    );
-
-}
+window.addEventListener(
+    "resize",
+    colocarCesta
+);
